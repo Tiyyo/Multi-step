@@ -7,17 +7,14 @@
 //---import vendors library 
 
 //---import base folder
-@import 'base/base';
 @import 'base/reset';
-@import 'base/typography';
+@import 'base/bases';
+
 
 //---import layout folder
-@import 'layout/header';
-@import 'layout/functionality_section';
-@import 'layout/productive_section';
-@import 'layout/quotes_section';
-@import 'layout/form_section';
-@import 'layout/footer';
+@import 'layout/main';
+@import 'layout/page';
+
 
 //----import components folder
 
