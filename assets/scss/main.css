@@ -1,15 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 :root {
-  --color_1: hsl(213, 96%, 18%);
-  --color_2: hsl(243, 100%, 62%);
+  --title: hsl(213, 96%, 18%);
+  --confirm_btn: hsl(243, 100%, 62%);
   --color_3: hsl(228, 100%, 84%);
   --color_4: hsl(206, 94%, 87%);
   --color_5: hsl(354, 84%, 57%);
   --color_6: hsl(231, 11%, 63%);
   --color_7: hsl(229, 24%, 87%);
-  --color_8: hsl(217, 100%, 97%) ;
+  --bg: hsl(217, 100%, 97%) ;
   --color_9: hsl(231, 100%, 99%) ;
   --white: hsl(0, 0%, 100%);
+}
+
+.step__number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 *, *:before, *:after {
@@ -67,12 +73,163 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--color_3);
+  background-color: var(--bg);
 }
 
 .main {
-  border: 1px black solid;
+  font-size: 62.5%;
   border-radius: 18px;
   background-color: white;
   color: var(--color_1);
+  height: 80vh;
+  width: 70vw;
+  max-height: 800px;
+  max-width: 1300px;
+  display: flex;
+  padding: 1vw;
+}
+.main__stage {
+  border-radius: 12px;
+  padding-top: 20px;
+  width: 33%;
+  min-width: 152px;
+  background: url("../images/bg-sidebar-desktop.svg") center/cover;
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+}
+.main__pages {
+  position: relative;
+  margin-left: 60px;
+  margin-bottom: 25px;
+  padding: 20px 35px 0 5px;
+  width: 100%;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  padding: 15px 0 15px 15px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+  font-weight: 700;
+  width: 100%;
+}
+.step__number {
+  border-radius: 50%;
+  border: 1px solid var(--white);
+  background-color: transparent;
+  height: 30px;
+  width: 30px;
+  flex-shrink: 0;
+}
+.step__name {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  flex-wrap: wrap;
+}
+.step__name > h2 {
+  font-weight: 400;
+  color: var(--color_6);
+}
+.step__name > h3 {
+  font-size: 0.8rem;
+}
+
+.page__step--1 {
+  display: flex;
+}
+
+.page__step--2 {
+  display: none;
+}
+
+.page__step--3 {
+  display: none;
+}
+
+.page__step--4 {
+  display: none;
+}
+
+.thank--you {
+  display: none;
+}
+
+.page {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.page__main {
+  flex: 10;
+  height: 500px;
+}
+.page__main__header {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+.page__main__header > h5 {
+  color: var(--title);
+  font-size: 2.7rem;
+  font-weight: 700;
+}
+.page__main__header > h6 {
+  color: var(--color_6);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.page .next {
+  color: var(--white);
+  background-color: var(--title);
+  position: absolute;
+  right: 0;
+  transition: 0.35s ease-in-out;
+}
+.page .next:hover {
+  background-color: hsl(213deg, 100%, 28%);
+}
+.page__nav {
+  position: relative;
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.page__nav .prev {
+  position: absolute;
+  left: 0;
+  color: var(--color_6);
+  transition: 0.35s ease-in-out;
+}
+.page__nav .prev:hover {
+  color: var(--title);
+}
+.page__nav .confirm {
+  background-color: var(--confirm_btn);
+  transition: 0.35s ease-in-out;
+}
+.page__nav .confirm:hover {
+  background-color: hsl(243deg, 100%, 80%);
+}
+.page__nav > button {
+  font-family: "Ubuntu", sans-serif;
+  border: 0;
+  height: 50px;
+  width: 20%;
+  min-width: 70px;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: transparent;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.next {
+  color: var(--white);
+  background-color: var(--title);
 }/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,104 @@
+.page__step--1 {
+    display :  flex ;
+}
+.page__step--2 {
+    display :  none ;
+}
+.page__step--3 {
+    display :  none ;
+}
+.page__step--4 {
+    display :  none ;
+}
+.thank--you  {
+    display : none ;
+}
+
+.page  {
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    
+
+    &__main  {
+        flex: 10;
+        height: 500px;
+        
+        &__header  {
+            display: flex;
+            flex-direction: column;
+            row-gap: 15px;
+            
+            & > h5  {
+                color: var(--title);
+                font-size: 2.7rem;
+                font-weight: 700;
+            }
+
+            & > h6  {
+                color: var(--color_6);
+                font-size: 1.2rem;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .next{
+        color: var(--white);
+        background-color: var(--title);
+        position: absolute;
+        right: 0;
+        transition: 0.35s ease-in-out;
+
+        &:hover  {
+            background-color: hsl(213, 100%, 28%);
+        }
+    }
+
+    &__nav  {
+        position: relative;
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        .prev  {
+            position: absolute;
+            left: 0;
+            color: var(--color_6);
+            transition: 0.35s ease-in-out;
+
+            &:hover  {
+                color: var(--title);
+            }
+        }
+
+        .confirm  {
+            background-color: var(--confirm_btn);
+            transition: 0.35s ease-in-out;
+            
+            &:hover  {
+               background-color: hsl(243, 100%, 80%);
+            }
+        }
+        
+        & > button  {
+            font-family: 'Ubuntu', sans-serif ;
+            border: 0;
+            height: 50px;
+            width: 20%;
+            min-width: 70px;
+            font-size: 1rem;
+            font-weight: 500;
+            background-color: transparent; 
+            border-radius: 9px;
+            cursor: pointer;
+        }
+    }
+}
+
+.next{
+    color: var(--white);
+    background-color: var(--title);
+}
+
