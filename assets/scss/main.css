@@ -4,7 +4,7 @@
   --confirm_btn: hsl(243, 100%, 62%);
   --color_3: hsl(228, 100%, 84%);
   --color_4: hsl(206, 94%, 87%);
-  --color_5: hsl(354, 84%, 57%);
+  --error: hsl(354, 84%, 57%);
   --color_6: hsl(231, 11%, 63%);
   --color_7: hsl(229, 24%, 87%);
   --bg: hsl(217, 100%, 97%) ;
@@ -140,11 +140,11 @@ body {
 }
 
 .page__step--1 {
-  display: flex;
+  display: none;
 }
 
 .page__step--2 {
-  display: none;
+  display: flex;
 }
 
 .page__step--3 {
@@ -161,12 +161,14 @@ body {
 
 .page {
   flex-direction: column;
-  justify-content: space-between;
   height: 100%;
 }
 .page__main {
-  flex: 10;
-  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-bottom: 35px;
+  height: 100%;
 }
 .page__main__header {
   display: flex;
@@ -195,7 +197,6 @@ body {
 }
 .page__nav {
   position: relative;
-  flex: 1;
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -232,4 +233,108 @@ body {
 .next {
   color: var(--white);
   background-color: var(--title);
+}
+
+.personal_info_form {
+  display: flex;
+  flex-direction: column;
+}
+.personal_info_form > input {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  border: 1px solid var(--color_7);
+  border-radius: 9px;
+  margin-bottom: 25px;
+  padding-left: 20px;
+}
+.personal_info_form > input::-moz-placeholder {
+  color: var(--color_6);
+  padding-left: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.personal_info_form > input:-ms-input-placeholder {
+  color: var(--color_6);
+  padding-left: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.personal_info_form > input::placeholder {
+  color: var(--color_6);
+  padding-left: 20px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+.personal_info_form > input[data-active=true] {
+  border: 1px solid var(--error);
+}
+.personal_info_form > label {
+  position: relative;
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+}
+.personal_info_form > label[data-active=true]::after {
+  content: "This field is required";
+  position: absolute;
+  right: 10px;
+  color: var(--error);
+  font-weight: 700;
+}
+
+.select_your_plan {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 80% 20%;
+  row-gap: 30px;
+  align-content: space-between;
+}
+.select_your_plan .card {
+  border: 1px solid var(--color_6);
+  border-radius: 12px;
+  width: 150px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  grid-row-end: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  row-gap: 6px;
+  padding: 10px;
+  cursor: pointer;
+}
+.select_your_plan .card:hover {
+  border: 1px solid var(--confirm_btn);
+}
+.select_your_plan .card__img {
+  width: 37%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-bottom: 50px;
+}
+.select_your_plan .card__name {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color_2);
+}
+.select_your_plan .card__price {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color_6);
+}
+.select_your_plan .card__gift {
+  color: var(--color_2);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.select_your_plan .card[data-active=true] {
+  background-color: var(--color_3);
+}
+.select_your_plan .toggle_switch_container {
+  grid-row-start: 2;
+  grid-row-end: 3;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  background-color: var(--color_7);
 }/*# sourceMappingURL=main.css.map */

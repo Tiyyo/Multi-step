@@ -66,11 +66,21 @@
                 Please provide your name, email address, and phone number.
               </h6>
             </div>
-            <div class="page__main__choices"></div>
+            <div class="page__main__choices">
+              <form class="personal_info_form"action="post">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="e.g. Stephen King">
+                <label for="email_adress">Email Adress</label>
+                <input type="email" id="email_adress" placeholder="e.g. stephanking@lorem.com">
+                <label for="phone_number">Phone Number</label>
+                <input type="number"  id="phone_number" placeholder="e.g. +1234 567 890">
+              </form>
+            </div>
+            <div class="page__nav">
+              <button class="next">Next Step</button>
+            </div>
           </div>
-          <div class="page__nav">
-            <button class="next">Next Step</button>
-          </div>
+     
         </div>
           <div class="page page__step--2">
             <div class="page__main">
@@ -78,11 +88,35 @@
                 <h5>Select your plan</h5>
                 <h6>You have the option of monthly or yearly billing.</h6>
               </div>
-              <div class="page__main__choices"></div>
-            </div>
-            <div class="page__nav">
-              <button class="prev">Go Back</button>
-              <button class="next">Next Step</button>
+              <div class="page__main__choices">
+                <div class="select_your_plan">
+                  <div class="card arcade">
+                    <img class="card__img" src="./assets/images/icon-arcade.svg" alt="icon arcade">
+                    <h4 class="card__name">Arcade</h4>
+                    <p class="card__price">90/yr</p>
+                    <p class="card__gift">2 months free</p>
+
+                  </div>
+                  <div class="card advanced">
+                    <img class="card__img" src="./assets/images/icon-advanced.svg" alt="icon advanced">
+                    <h4 class="card__name">Advanced</h4>
+                    <p class="card__price">120/yr</p>
+                    <p class="card__gift">2 months free</p>
+                  </div>
+                  <div class="card pro">
+                    <img class="card__img" src="./assets/images/icon-pro.svg" alt="icon pro">
+                    <h4 class="card__name">Pro</h4>
+                    <p class="card__price">150/yr</p>
+                    <p class="card__gift">2 months free</p>
+                    
+                  </div>
+                  <div class="toggle_switch_container"></div>
+                </div>
+              </div>
+              <div class="page__nav">
+                <button class="prev">Go Back</button>
+                <button class="next">Next Step</button>
+              </div>
             </div>
           </div>
           <div class="page page__step--3">
@@ -105,10 +139,10 @@
                 <h6>Double-check everything looks OK before confirming.</h6>
               </div>
               <div class="page__main__choices"></div>
-            </div>
-            <div class="page__nav">
-              <button class="prev">Go Back</button>
-              <button class="confirm">Confirm</button>
+              <div class="page__nav">
+                <button class="prev">Go Back</button>
+                <button class="confirm">Confirm</button>
+              </div>
             </div>
           </div>
           <div class="thank--you">

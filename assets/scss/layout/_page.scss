@@ -1,8 +1,8 @@
 .page__step--1 {
-    display :  flex ;
+    display :  none ;
 }
 .page__step--2 {
-    display :  none ;
+    display :  flex ;
 }
 .page__step--3 {
     display :  none ;
@@ -16,13 +16,16 @@
 
 .page  {
     flex-direction: column;
-    justify-content: space-between;
     height: 100%;
     
-
+    
     &__main  {
-        flex: 10;
-        height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: 35px;
+        height: 100%;
+       
         
         &__header  {
             display: flex;
@@ -41,6 +44,10 @@
                 font-weight: 400;
             }
         }
+
+        &__choices  {
+                 
+        }
     }
 
     .next{
@@ -57,7 +64,6 @@
 
     &__nav  {
         position: relative;
-        flex: 1;
         display: flex;
         justify-content: space-between;
         width: 100%;
@@ -76,7 +82,7 @@
         .confirm  {
             background-color: var(--confirm_btn);
             transition: 0.35s ease-in-out;
-            
+
             &:hover  {
                background-color: hsl(243, 100%, 80%);
             }
@@ -102,3 +108,107 @@
     background-color: var(--title);
 }
 
+.personal_info_form  {
+    display: flex;
+    flex-direction: column;
+
+
+    
+    & > input  {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        border: 1px solid var(--color_7);
+        border-radius: 9px;
+        margin-bottom: 25px;
+        padding-left: 20px;
+
+        &::placeholder  {
+            color: var(--color_6) ;
+            padding-left: 20px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        &[data-active=true]{
+            border: 1px solid var(--error);
+        }
+    }
+    & > label  {
+        position: relative;
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+
+        &[data-active=true] {
+            &::after  {
+                content: "This field is required";
+                position: absolute;
+                right: 10px;
+                color: var(--error);
+                font-weight: 700;
+            }
+        }
+       
+
+    }
+
+}
+
+.select_your_plan  {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 80% 20%;
+    row-gap: 30px;
+    align-content: space-between;
+
+    .card  {
+        border: 1px solid var(--color_6);
+        border-radius: 12px;
+        width: 150px;
+        height: fit-content;
+        grid-row-end: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        row-gap: 6px;
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover  {
+            border: 1px solid var(--confirm_btn);   
+        }
+
+        &__img  {
+            width: 37%;
+            object-fit: cover;
+            margin-bottom: 50px;
+        }
+        &__name  {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color_2);
+        }
+        &__price  {
+            font-size: 1rem ;
+            font-weight: 400;
+            color: var(--color_6);
+
+        }
+        &__gift  {
+            color: var(--color_2);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        &[data-active="true"]{
+            background-color: var(--color_3);
+        }
+    }
+    .toggle_switch_container  {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        background-color: var(--color_7);
+    }
+}
