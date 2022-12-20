@@ -1,0 +1,72 @@
+.confirm  {
+    position: absolute;
+    right: 0;
+    color: var(--white);
+    transition: 0.35s ease-in-out;
+}
+.summary  {
+    background-color: var(--color_9);
+    border-radius: 15px;
+    font-size: 0.8rem;
+    padding: 20px ;
+    &__plan  {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.24);
+        padding-bottom: 20px;
+        color: var(--title);
+
+        &__name  {
+            font-size: 1.2rem;
+            font-weight: 700;
+            &__change  {
+                margin-top: 4px;
+                font-size: 0.9rem;
+                color: var(--color_6);
+                font-weight: 400;
+                text-decoration: underline;
+            }
+        }
+        &__price  {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+    }
+    &__addon  {
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+        padding: 10px 0;
+        &__picked  {
+            display: flex;
+            justify-content: space-between;
+            &__name  {
+                font-size: 0.9rem;
+                color: var(--color_6);
+                font-weight: 500;
+            }
+            &__price  {
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: var(--title);
+            }
+        }
+    }
+    &__total  {
+        background-color: var(--white);
+        display: flex;
+        justify-content: space-between;
+        padding: 20px ;
+        margin-top: 15px;
+        &__text  {
+            color: var(--color_6);
+            font-size: 1.2rem;
+        }
+        &__price  {
+            color: var(--confirm_btn);
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+      
+    }
+}

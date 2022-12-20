@@ -1,0 +1,123 @@
+.select_your_plan  {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 80% 20%;
+    row-gap: 30px;
+    justify-items: center;
+    max-width: 520px;
+
+    .card  {
+        border: 1px solid var(--color_6);
+        border-radius: 12px;
+        width: 150px;
+        height: fit-content;
+        grid-row-end: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        row-gap: 6px;
+        padding: 10px;
+        cursor: pointer;
+
+        &:hover  {
+            border: 1px solid var(--confirm_btn);   
+        }
+
+        &__img  {
+            width: 37%;
+            object-fit: cover;
+            margin-bottom: 50px;
+        }
+        &__name  {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--color_2);
+        }
+        &__price  {
+            font-size: 1rem ;
+            font-weight: 400;
+            color: var(--color_6);
+
+        }
+        &__gift  {
+            color: var(--color_2);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        &[data-active="true"]{
+            background-color: var(--color_3);
+        }
+    }
+    .toggle_switch_container  {
+        grid-row-start: 2;
+        grid-row-end: 3;
+        grid-column-start: 1;
+        grid-column-end: 4;
+        background-color: var(--color_9);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+}
+.toggle  {
+    &__month  {
+        color: var(--title);
+        font-weight: 700;
+        font-size: 1rem;
+        margin-right: 10px;
+    }
+    &__switch  {
+        border: 2px solid black;
+        display: inline-block;
+        position: relative;
+        border-radius: 20px;
+        width: 40px;
+        height: 20px;
+        cursor: pointer;
+        overflow: hidden;
+
+        & > input {
+            display: none;
+
+
+            &:checked + .toggle__switch__slider::before  {
+                transform: translate(20px, -50%);
+            }
+        }
+
+        &__slider  {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            cursor: pointer;
+            transition: 0.5s;
+            background-color: var(--title);
+            box-shadow: inset 4px 4px 4px rgba(1, 5, 45, 0.445);
+
+            &::before  {
+                position: absolute;
+                content: "";
+                border-radius: 50%;
+                height: 13px;
+                width: 13px;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: var(--color_9);
+                transition: 0.5s;
+            }
+        }
+
+       
+    }
+    &__year  {
+        color: var(--color_6);
+        font-size: 1rem;
+        margin-left: 10px;
+    }
+    
+}

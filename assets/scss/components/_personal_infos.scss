@@ -1,0 +1,46 @@
+.personal_info_form  {
+    display: flex;
+    flex-direction: column;
+
+
+    
+    & > input  {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        border: 1px solid var(--color_7);
+        border-radius: 9px;
+        margin-bottom: 25px;
+        padding-left: 20px;
+
+        &::placeholder  {
+            color: var(--color_6) ;
+            padding-left: 20px;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        &[data-active=true]{
+            border: 1px solid var(--error);
+        }
+    }
+    & > label  {
+        position: relative;
+        font-size: 1rem;
+        margin-bottom: 0.6rem;
+
+        &[data-active=true] {
+            &::after  {
+                content: "This field is required";
+                position: absolute;
+                right: 10px;
+                color: var(--error);
+                font-weight: 700;
+            }
+        }
+       
+
+    }
+
+}
+
