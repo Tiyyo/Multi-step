@@ -124,6 +124,11 @@ body {
   width: 30px;
   flex-shrink: 0;
 }
+.step__number[data-active=true] {
+  color: var(--title);
+  border: 0;
+  background-color: var(--color_4);
+}
 .step__name {
   text-transform: uppercase;
   display: flex;
@@ -142,21 +147,36 @@ body {
 .page__step--1 {
   display: none;
 }
+.page__step--1[data-step="1"] {
+  display: flex;
+}
 
 .page__step--2 {
   display: none;
+}
+.page__step--2[data-step="2"] {
+  display: flex;
 }
 
 .page__step--3 {
   display: none;
 }
+.page__step--3[data-step="3"] {
+  display: flex;
+}
 
 .page__step--4 {
+  display: none;
+}
+.page__step--4[data-step="4"] {
   display: flex;
 }
 
 .thank--you {
   display: none;
+}
+.thank--you[data-step="5"] {
+  display: flex;
 }
 
 .page {

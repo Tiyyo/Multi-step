@@ -1,20 +1,36 @@
 .page__step--1 {
-    display :  none ;
+    display :  none;
+    &[data-step="1"] {
+        display: flex;
+    }
 }
 .page__step--2 {
     display :  none ;
+    &[data-step="2"] {
+        display: flex;
+    }
 }
 .page__step--3 {
     display :  none;
+    &[data-step="3"] {
+        display: flex;
+    }
 }
 .page__step--4 {
-    display :  flex ;
+    display :  none ;
+    &[data-step="4"] {
+        display: flex;
+    }
 }
 .thank--you  {
     display : none;
+    &[data-step="5"] {
+        display: flex;
+    }
 }
 
 .page  {
+
     flex-direction: column;
     height: 100%;
     padding-top: 35px;

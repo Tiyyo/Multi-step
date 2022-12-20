@@ -48,6 +48,11 @@
         height: $step_number_size;
         width: $step_number_size;
         flex-shrink: 0;
+        &[data-active="true"]{
+            color: var(--title);
+            border: 0;
+            background-color: var(--color_4);
+        }
     }
 
     &__name  {
