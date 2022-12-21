@@ -8,12 +8,12 @@ const emailInput = document.getElementById("email_adress");
 const phoneInput = document.getElementById("phone_number");
 const labels = document.getElementsByTagName("label");
 const cards = document.querySelectorAll(".card");
+const steps = document.querySelectorAll(".step");
 let formIsValid = false;
 let planIsSelect = false;
-let addonAreSelected = false;
 let stage = 1;
 
-console.log(cards);
+console.log(steps);
 
 const setStageNumber = (arr, number) => {
   arr.forEach((el) => {
@@ -35,8 +35,6 @@ const stageValidation = () => {
   if (stage >= 1 && formIsValid === false) {
     return false;
   } else if (stage >= 2 && planIsSelect === false) {
-    return false;
-  } else if (stage >= 3 && addonAreSelected === false) {
     return false;
   } else {
     return true;
@@ -98,7 +96,6 @@ const formValidation = () => {
 
 const planValidation = () => {
   for (let i = 0; i < cards.length; i++) {
-    console.log(cards[i]);
     if (cards[i].dataset.active) {
       return (planIsSelect = true);
     }
@@ -107,6 +104,7 @@ const planValidation = () => {
 
 window.addEventListener("load", () => {
   setStageNumber(allPages, stage);
+  setIndicatorStage(roundIndicatorStep, stage);
 });
 
 cards.forEach((card) => {
@@ -121,16 +119,33 @@ cards.forEach((card) => {
   });
 });
 
+roundIndicatorStep.forEach((indicator) => {
+  indicator.addEventListener("click", (e) => {
+    stage = parseInt(e.target.textContent);
+    if (stageValidation() === true) {
+      setStageNumber(allPages, stage);
+      setIndicatorStage(roundIndicatorStep, stage);
+      console.log(stage);
+    }
+  });
+});
+
 allBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     formValidation();
     planValidation();
     console.log(planValidation());
-    if (e.target.className === "next" && stageValidation() === true) {
+    console.log(stage);
+    if (
+      e.target.className === "next" &&
+      stageValidation() === true &&
+      stage < 4
+    ) {
       stage++;
     } else if (e.target.className === "prev") {
       stage--;
     }
+    console.log(stage);
     setStageNumber(allPages, stage);
     setIndicatorStage(roundIndicatorStep, stage);
   });

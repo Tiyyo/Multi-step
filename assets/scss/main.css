@@ -115,6 +115,7 @@ body {
        column-gap: 10px;
   font-weight: 700;
   width: 100%;
+  cursor: pointer;
 }
 .step__number {
   border-radius: 50%;
