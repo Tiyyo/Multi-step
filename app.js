@@ -9,11 +9,67 @@ const phoneInput = document.getElementById("phone_number");
 const labels = document.getElementsByTagName("label");
 const cards = document.querySelectorAll(".card");
 const steps = document.querySelectorAll(".step");
+const gifts = document.querySelectorAll(".card__gift");
+const switchCheckbox = document.getElementById("switch");
+const prices = document.querySelectorAll(".price");
+const options = document.querySelectorAll(".option-billing");
+const roundSlider = document.querySelector(".round");
+
+const onlineService = {
+  name: "Online service",
+  price: {
+    month: 1,
+    year: 10,
+  },
+};
+
+const largerStorage = {
+  name: "Larger storage",
+  price: {
+    month: 2,
+    year: 20,
+  },
+};
+
+const customizableProfile = {
+  name: "Customizable profile",
+  price: {
+    month: 2,
+    year: 20,
+  },
+};
+
+const arcade = {
+  name: "Arcade",
+  price: {
+    month: 9,
+    year: 90,
+  },
+};
+
+const advanced = {
+  name: "Advanced",
+  price: {
+    month: 12,
+    year: 120,
+  },
+};
+
+const pro = {
+  name: "Pro",
+  price: {
+    month: 15,
+    year: 150,
+  },
+};
+
 let formIsValid = false;
 let planIsSelect = false;
 let stage = 1;
+let yearOrMonth = "month";
+let summaryAddOn = [];
 
-console.log(steps);
+console.log(roundSlider);
 
 const setStageNumber = (arr, number) => {
   arr.forEach((el) => {
@@ -102,9 +158,61 @@ const planValidation = () => {
   }
 };
 
+const displayGiftedMonth = (arr) => {
+  if (yearOrMonth === "year") {
+    arr.forEach((gift) => {
+      gift.setAttribute("data-active", true);
+    });
+  } else {
+    arr.forEach((gift) => {
+      gift.removeAttribute("data-active");
+    });
+  }
+};
+
+const displayPriceValue = () => {
+  if (yearOrMonth === "year") {
+    prices.forEach((price) => {
+      let newPrice = parseInt(price.textContent);
+      price.textContent = newPrice * 10;
+    });
+  } else {
+    prices.forEach((price) => {
+      let newPrice = parseInt(price.textContent);
+      price.textContent = newPrice / 10;
+    });
+  }
+};
+
+const displayMonthorYear = () => {
+  if (yearOrMonth === "year") {
+    options.forEach((option) => {
+      option.textContent = "/yr";
+    });
+  } else {
+    options.forEach((option) => {
+      option.textContent = "/mo";
+    });
+  }
+};
+
 window.addEventListener("load", () => {
   setStageNumber(allPages, stage);
   setIndicatorStage(roundIndicatorStep, stage);
+});
+
+roundSlider.addEventListener("click", () => {
+  setTimeout(() => {
+    if (switchCheckbox.checked === true) {
+      yearOrMonth = "year";
+    } else {
+      yearOrMonth = "month";
+    }
+    displayGiftedMonth(gifts);
+    displayPriceValue();
+    displayMonthorYear();
+    console.log(yearOrMonth);
+  }, 100);
 });
 
 cards.forEach((card) => {

@@ -351,9 +351,13 @@ body {
   color: var(--color_6);
 }
 .select_your_plan .card__gift {
+  display: none;
   color: var(--color_2);
   font-size: 1rem;
   font-weight: 500;
+}
+.select_your_plan .card__gift[data-active=true] {
+  display: flex;
 }
 .select_your_plan .card[data-active=true] {
   background-color: var(--color_3);

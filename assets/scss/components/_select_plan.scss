@@ -40,9 +40,14 @@
 
         }
         &__gift  {
+            display: none;
             color: var(--color_2);
             font-size: 1rem;
             font-weight: 500;
+
+            &[data-active="true"] {
+                display: flex;
+            }
         }
 
         &[data-active="true"]{
