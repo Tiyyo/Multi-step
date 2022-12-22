@@ -334,7 +334,7 @@ body {
   cursor: pointer;
 }
 .select_your_plan .card:hover {
-  border: 1px solid var(--confirm_btn);
+  border: 1px solid var(--title);
 }
 .select_your_plan .card__img {
   width: 37%;
@@ -354,9 +354,9 @@ body {
 }
 .select_your_plan .card__gift {
   display: none;
-  color: var(--color_2);
+  color: var(--title);
   font-size: 1rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 .select_your_plan .card__gift[data-active=true] {
   display: flex;
@@ -383,7 +383,6 @@ body {
   margin-right: 10px;
 }
 .toggle__switch {
-  border: 2px solid black;
   display: inline-block;
   position: relative;
   border-radius: 20px;
@@ -396,7 +395,7 @@ body {
   display: none;
 }
 .toggle__switch > input:checked + .toggle__switch__slider::before {
-  transform: translate(20px, -50%);
+  transform: translate(23px, -50%);
 }
 .toggle__switch__slider {
   position: absolute;
@@ -407,12 +406,13 @@ body {
   cursor: pointer;
   transition: 0.5s;
   background-color: var(--title);
-  box-shadow: inset 4px 4px 4px rgba(1, 5, 45, 0.445);
+  box-shadow: inset 4px 4px 4px rgba(0, 5, 45, 0.445);
 }
 .toggle__switch__slider::before {
   position: absolute;
   content: "";
   border-radius: 50%;
+  left: 2px;
   height: 13px;
   width: 13px;
   top: 50%;
@@ -441,7 +441,7 @@ body {
 }
 .addon[data-checked=true] {
   border: 1px solid var(--title);
-  background-color: var(--color_4);
+  background-color: var(--bg);
 }
 .addon__input {
   flex: 1;

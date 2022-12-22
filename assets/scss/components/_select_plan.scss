@@ -20,7 +20,7 @@
         cursor: pointer;
 
         &:hover  {
-            border: 1px solid var(--confirm_btn);   
+            border: 1px solid var(--title);   
         }
 
         &__img  {
@@ -41,9 +41,9 @@
         }
         &__gift  {
             display: none;
-            color: var(--color_2);
+            color: var(--title);
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 400;
 
             &[data-active="true"] {
                 display: flex;
@@ -75,7 +75,7 @@
         margin-right: 10px;
     }
     &__switch  {
-        border: 2px solid black;
+        // border: 2px solid black;
         display: inline-block;
         position: relative;
         border-radius: 20px;
@@ -89,7 +89,7 @@
 
 
             &:checked + .toggle__switch__slider::before  {
-                transform: translate(20px, -50%);
+                transform: translate(23px, -50%);
             }
         }
 
@@ -102,12 +102,13 @@
             cursor: pointer;
             transition: 0.5s;
             background-color: var(--title);
-            box-shadow: inset 4px 4px 4px rgba(1, 5, 45, 0.445);
+            box-shadow: inset 4px 4px 4px rgba(0, 5, 45, 0.445);
 
             &::before  {
                 position: absolute;
                 content: "";
                 border-radius: 50%;
+                left: 2px;
                 height: 13px;
                 width: 13px;
                 top: 50%;

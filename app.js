@@ -19,6 +19,7 @@ const addonInputs = document.querySelectorAll(".addon__input");
 const addonSummaryContainer = document.getElementById(
   "summary-addon-container"
 );
+const planContainer = document.getElementsByClassName("plan__container")[0];
 
 const onlineService = {
   name: "Online service",
@@ -73,6 +74,7 @@ let planIsSelect = false;
 let stage = 1;
 let yearOrMonth = "month";
 let summaryAddOn = [];
+let plans = [arcade, advanced, pro];
 
 console.log(roundSlider);
 
@@ -201,6 +203,10 @@ const displayMonthorYear = () => {
   }
 };
 
+const displayBackgroundAddon = () => {
+  console.log(addonInputs);
+  addonInputs.forEach((addon) => {});
+};
 const setAddonArray = (event, object, input, arr) => {
   let str = event.target.id.replace("_", " ");
   if (str === object.name.toLowerCase() && input.checked === true) {
@@ -260,6 +266,32 @@ cards.forEach((card) => {
     cards.forEach((card) => {
       if (card == e.target) {
         card.setAttribute("data-active", true);
+        let str = e.target.className.replace("card ", "");
+        plans.forEach((plan) => {
+          if (str === plan.name.toLowerCase()) {
+            alert("win");
+            if (yearOrMonth == "month") {
+              planContainer.innerHTML = `<div class="summary__plan">
+                                          <div class="summary__plan__name">
+                                            <p class="psummary__plan__name__choice">${plan.name}<span>(Monthly)</span></p>
+                                            <p class="summary__plan__name__change">Change</p>
+                                          </div>
+                                        <p class="summary__plan__price">+$<span class="price">${plan.price.month}</span><span class="option-billing">/mo<span></p>
+                                        </div> `;
+            } else {
+              `<div class="summary__plan">
+            <div class="summary__plan__name">
+              <p class="psummary__plan__name__choice">${plan.name}<span>(Yearly)</span></p>
+              <p class="summary__plan__name__change">Change</p>
+            </div>
+          <p class="summary__plan__price">+$<span class="price">${plan.price.year}</span><span class="option-billing">/yr<span></p>
+          </div> `;
+            }
+          }
+        });
+        // planContainer.innerHTML = str.map((el) => {
+        //   console.log(el);
+        // });
       } else {
         card.removeAttribute("data-active");
       }
@@ -273,25 +305,28 @@ roundIndicatorStep.forEach((indicator) => {
     if (stageValidation() === true) {
       setStageNumber(allPages, stage);
       setIndicatorStage(roundIndicatorStep, stage);
-      console.log(stage);
     }
   });
 });
 
 addonInputs.forEach((input) => {
   input.addEventListener("click", (e) => {
+    if (e.target.parentNode.children[0].checked === true) {
+      e.target.parentNode.setAttribute("data-checked", true);
+    } else {
+      e.target.parentNode.removeAttribute("data-checked");
+    }
+
+    displayBackgroundAddon();
     setAddonArray(e, onlineService, input, summaryAddOn);
     setAddonArray(e, largerStorage, input, summaryAddOn);
     setAddonArray(e, customizableProfile, input, summaryAddOn);
     displayAddonSummary();
-    console.log(summaryAddOn);
   });
 });
 
 addons.forEach((addon) => {
-  addon.addEventListener("click", (e) => {
-    console.log(e);
-  });
+  addon.addEventListener("click", (e) => {});
 });
 
 allBtn.forEach((btn) => {
@@ -320,15 +355,14 @@ confirmBtn.addEventListener("click", () => {
   setStageNumber(allPages, stage);
 });
 
-class AddOn {
-  constructor(name, month, year) {
-    (this.name = name),
-      (this.price = {
-        month: month,
-        year: year,
-      });
-  }
-}
+// class AddOn {
+//   constructor(name, month, year) {
+//     (this.name = name),
+//       (this.price = {
+//         month: month,
+//         year: year,
+//       });
+//   }
+// }
 
-const essai = new AddOn();
-console.log(AddOn);
+// const essai = new AddOn();
