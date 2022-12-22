@@ -220,10 +220,17 @@ const displayAddonSummary = () => {
   addonSummaryContainer.innerHTML = summaryAddOn
     .map((addon) => {
       console.log(addon);
-      return `<div class="summary__addon__picked">
-              <P class="summary__addon__picked__name">${addon.name}</P>
-              <p class="summary__addon__picked__price">+$<span class="price">${addon.price.month}</span><span class="option-billing">/mo</span></p>
+      if (yearOrMonth === "year") {
+        return `<div class="summary__addon__picked">
+        <P class="summary__addon__picked__name">${addon.name}</P>
+        <p class="summary__addon__picked__price">+$<span class="price">${addon.price.year}</span><span class="option-billing">/yr</span></p>
 </div>`;
+      } else {
+        return `<div class="summary__addon__picked">
+        <P class="summary__addon__picked__name">${addon.name}</P>
+        <p class="summary__addon__picked__price">+$<span class="price">${addon.price.month}</span><span class="option-billing">/mo</span></p>
+</div>`;
+      }
     })
     .join("");
 };
@@ -278,6 +285,12 @@ addonInputs.forEach((input) => {
     setAddonArray(e, customizableProfile, input, summaryAddOn);
     displayAddonSummary();
     console.log(summaryAddOn);
+  });
+});
+
+addons.forEach((addon) => {
+  addon.addEventListener("click", (e) => {
+    console.log(e);
   });
 });
 

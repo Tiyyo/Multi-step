@@ -235,6 +235,8 @@ body {
 }
 .page__nav .prev:hover {
   color: var(--title);
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 .page__nav .confirm {
   background-color: var(--confirm_btn);
