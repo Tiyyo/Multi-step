@@ -14,6 +14,11 @@ const switchCheckbox = document.getElementById("switch");
 const prices = document.querySelectorAll(".price");
 const options = document.querySelectorAll(".option-billing");
 const roundSlider = document.querySelector(".round");
+const addons = document.querySelectorAll(".addon");
+const addonInputs = document.querySelectorAll(".addon__input");
+const addonSummaryContainer = document.getElementById(
+  "summary-addon-container"
+);
 
 const onlineService = {
   name: "Online service",
@@ -196,9 +201,37 @@ const displayMonthorYear = () => {
   }
 };
 
+const setAddonArray = (event, object, input, arr) => {
+  let str = event.target.id.replace("_", " ");
+  if (str === object.name.toLowerCase() && input.checked === true) {
+    arr.push(object);
+    let newArr = [...new Set(arr)];
+    arr = newArr;
+  } else if (str === object.name.toLowerCase() && input.checked === false) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].name.toLowerCase() === str) {
+        arr.splice(i, 1);
+      }
+    }
+  }
+};
+
+const displayAddonSummary = () => {
+  addonSummaryContainer.innerHTML = summaryAddOn
+    .map((addon) => {
+      console.log(addon);
+      return `<div class="summary__addon__picked">
+              <P class="summary__addon__picked__name">${addon.name}</P>
+              <p class="summary__addon__picked__price">+$<span class="price">${addon.price.month}</span><span class="option-billing">/mo</span></p>
+</div>`;
+    })
+    .join("");
+};
+
 window.addEventListener("load", () => {
   setStageNumber(allPages, stage);
   setIndicatorStage(roundIndicatorStep, stage);
+  displayAddonSummary();
 });
 
 roundSlider.addEventListener("click", () => {
@@ -238,6 +271,16 @@ roundIndicatorStep.forEach((indicator) => {
   });
 });
 
+addonInputs.forEach((input) => {
+  input.addEventListener("click", (e) => {
+    setAddonArray(e, onlineService, input, summaryAddOn);
+    setAddonArray(e, largerStorage, input, summaryAddOn);
+    setAddonArray(e, customizableProfile, input, summaryAddOn);
+    displayAddonSummary();
+    console.log(summaryAddOn);
+  });
+});
+
 allBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     formValidation();
@@ -263,3 +306,16 @@ confirmBtn.addEventListener("click", () => {
   let stage = 5;
   setStageNumber(allPages, stage);
 });
+
+class AddOn {
+  constructor(name, month, year) {
+    (this.name = name),
+      (this.price = {
+        month: month,
+        year: year,
+      });
+  }
+}
+
+const essai = new AddOn();
+console.log(AddOn);
