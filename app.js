@@ -19,6 +19,8 @@ const addonSummaryContainer = document.getElementById(
 );
 const planContainer = document.getElementsByClassName("plan__container")[0];
 const totalBilling = document.getElementById("total-option-billling");
+const totalPrice = document.getElementById("total-price");
+
 const onlineService = {
   name: "Online service",
   price: {
@@ -75,6 +77,7 @@ let summaryAddOn = [];
 let plans = [arcade, advanced, pro];
 let changeBtn;
 let planSelected;
+let totalPlanPrice;
 
 const setStageNumber = (arr, number) => {
   arr.forEach((el) => {
@@ -194,12 +197,12 @@ const displayMonthorYear = () => {
   const options = document.querySelectorAll(".option-billing");
   console.log(options);
   if (yearOrMonth === "year") {
-    totalBilling.textContent = " (per year)";
+    totalBilling.innerHTML = " (per year)";
     options.forEach((option) => {
       option.textContent = "/yr";
     });
   } else {
-    totalBilling.textContent = " (per month)";
+    totalBilling.innerHTML = " (per month)";
     options.forEach((option) => {
       option.textContent = "/mo";
     });
@@ -240,6 +243,25 @@ const displayAddonSummary = () => {
     .join("");
 };
 
+const displayTotalPrice = () => {
+  for (let i = 0; i < plans.length; i++) {
+    if (plans[i].name.toLowerCase() === planSelected) {
+      totalPlanPrice = plans[i].price;
+    }
+  }
+  if (yearOrMonth === "month") {
+    const totalPriceValue = summaryAddOn.reduce((a, cur) => {
+      return a + cur.price.month;
+    }, totalPlanPrice.month);
+    totalPrice.textContent = totalPriceValue;
+  } else {
+    const totalPriceValue = summaryAddOn.reduce((a, cur) => {
+      return a + cur.price.year;
+    }, totalPlanPrice.year);
+    totalPrice.textContent = totalPriceValue;
+  }
+};
+
 window.addEventListener("load", () => {
   setStageNumber(allPages, stage);
   setIndicatorStage(roundIndicatorStep, stage);
@@ -266,7 +288,9 @@ cards.forEach((card) => {
       if (card == e.target) {
         card.setAttribute("data-active", true);
         let str = e.target.className.replace("card ", "");
-        planSelected = [str];
+        planSelected = str.toLowerCase();
+        console.log({ planSelected });
+        displayTotalPrice();
         plans.forEach((plan) => {
           if (str === plan.name.toLowerCase()) {
             if (yearOrMonth == "month") {
@@ -316,6 +340,7 @@ addonInputs.forEach((input) => {
     setAddonArray(e, largerStorage, input, summaryAddOn);
     setAddonArray(e, customizableProfile, input, summaryAddOn);
     displayAddonSummary();
+    displayTotalPrice();
   });
 });
 
