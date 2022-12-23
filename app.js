@@ -11,8 +11,6 @@ const cards = document.querySelectorAll(".card");
 const steps = document.querySelectorAll(".step");
 const gifts = document.querySelectorAll(".card__gift");
 const switchCheckbox = document.getElementById("switch");
-const prices = document.querySelectorAll(".price");
-const options = document.querySelectorAll(".option-billing");
 const roundSlider = document.querySelector(".round");
 const addons = document.querySelectorAll(".addon");
 const addonInputs = document.querySelectorAll(".addon__input");
@@ -20,7 +18,7 @@ const addonSummaryContainer = document.getElementById(
   "summary-addon-container"
 );
 const planContainer = document.getElementsByClassName("plan__container")[0];
-
+const totalBilling = document.getElementById("total-option-billling");
 const onlineService = {
   name: "Online service",
   price: {
@@ -75,8 +73,8 @@ let stage = 1;
 let yearOrMonth = "month";
 let summaryAddOn = [];
 let plans = [arcade, advanced, pro];
-
-console.log(roundSlider);
+let changeBtn;
+let planSelected;
 
 const setStageNumber = (arr, number) => {
   arr.forEach((el) => {
@@ -178,6 +176,7 @@ const displayGiftedMonth = (arr) => {
 };
 
 const displayPriceValue = () => {
+  const prices = document.querySelectorAll(".price");
   if (yearOrMonth === "year") {
     prices.forEach((price) => {
       let newPrice = parseInt(price.textContent);
@@ -192,21 +191,21 @@ const displayPriceValue = () => {
 };
 
 const displayMonthorYear = () => {
+  const options = document.querySelectorAll(".option-billing");
+  console.log(options);
   if (yearOrMonth === "year") {
+    totalBilling.textContent = " (per year)";
     options.forEach((option) => {
       option.textContent = "/yr";
     });
   } else {
+    totalBilling.textContent = " (per month)";
     options.forEach((option) => {
       option.textContent = "/mo";
     });
   }
 };
 
-const displayBackgroundAddon = () => {
-  console.log(addonInputs);
-  addonInputs.forEach((addon) => {});
-};
 const setAddonArray = (event, object, input, arr) => {
   let str = event.target.id.replace("_", " ");
   if (str === object.name.toLowerCase() && input.checked === true) {
@@ -267,14 +266,14 @@ cards.forEach((card) => {
       if (card == e.target) {
         card.setAttribute("data-active", true);
         let str = e.target.className.replace("card ", "");
+        planSelected = [str];
         plans.forEach((plan) => {
           if (str === plan.name.toLowerCase()) {
-            alert("win");
             if (yearOrMonth == "month") {
               planContainer.innerHTML = `<div class="summary__plan">
                                           <div class="summary__plan__name">
                                             <p class="psummary__plan__name__choice">${plan.name}<span>(Monthly)</span></p>
-                                            <p class="summary__plan__name__change">Change</p>
+                                            <p class="summary__plan__name__change" id="change-btn">Change</p>
                                           </div>
                                         <p class="summary__plan__price">+$<span class="price">${plan.price.month}</span><span class="option-billing">/mo<span></p>
                                         </div> `;
@@ -282,16 +281,13 @@ cards.forEach((card) => {
               `<div class="summary__plan">
             <div class="summary__plan__name">
               <p class="psummary__plan__name__choice">${plan.name}<span>(Yearly)</span></p>
-              <p class="summary__plan__name__change">Change</p>
+              <p class="summary__plan__name__change" id="change-btn">Change</p>
             </div>
           <p class="summary__plan__price">+$<span class="price">${plan.price.year}</span><span class="option-billing">/yr<span></p>
           </div> `;
             }
           }
         });
-        // planContainer.innerHTML = str.map((el) => {
-        //   console.log(el);
-        // });
       } else {
         card.removeAttribute("data-active");
       }
@@ -316,8 +312,6 @@ addonInputs.forEach((input) => {
     } else {
       e.target.parentNode.removeAttribute("data-checked");
     }
-
-    displayBackgroundAddon();
     setAddonArray(e, onlineService, input, summaryAddOn);
     setAddonArray(e, largerStorage, input, summaryAddOn);
     setAddonArray(e, customizableProfile, input, summaryAddOn);
@@ -325,16 +319,19 @@ addonInputs.forEach((input) => {
   });
 });
 
-addons.forEach((addon) => {
-  addon.addEventListener("click", (e) => {});
+planContainer.addEventListener("click", (e) => {
+  console.log(e.target.id);
+  if (e.target.id === "change-btn") {
+    stage = 2;
+    setStageNumber(allPages, stage);
+    setIndicatorStage(roundIndicatorStep, stage);
+  }
 });
 
 allBtn.forEach((btn) => {
   btn.addEventListener("click", (e) => {
     formValidation();
     planValidation();
-    console.log(planValidation());
-    console.log(stage);
     if (
       e.target.className === "next" &&
       stageValidation() === true &&
@@ -344,7 +341,6 @@ allBtn.forEach((btn) => {
     } else if (e.target.className === "prev") {
       stage--;
     }
-    console.log(stage);
     setStageNumber(allPages, stage);
     setIndicatorStage(roundIndicatorStep, stage);
   });
@@ -354,15 +350,3 @@ confirmBtn.addEventListener("click", () => {
   let stage = 5;
   setStageNumber(allPages, stage);
 });
-
-// class AddOn {
-//   constructor(name, month, year) {
-//     (this.name = name),
-//       (this.price = {
-//         month: month,
-//         year: year,
-//       });
-//   }
-// }
-
-// const essai = new AddOn();

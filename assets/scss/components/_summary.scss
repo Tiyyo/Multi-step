@@ -25,6 +25,12 @@
                 color: var(--color_6);
                 font-weight: 400;
                 text-decoration: underline;
+                transition: 0.25s ease-in;
+                &:hover {
+                    color: var(--confirm_btn);
+                    font-weight: 500;
+                    cursor: pointer;
+                }
             }
         }
         &__price  {
