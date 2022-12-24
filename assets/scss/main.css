@@ -88,6 +88,15 @@ body {
   display: flex;
   padding: 1vw;
 }
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    padding: 0;
+    max-height: auto;
+    height: auto;
+    width: 100vw;
+  }
+}
 .main__stage {
   border-radius: 12px;
   padding-top: 20px;
@@ -98,6 +107,18 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 0.7rem;
+}
+@media (max-width: 768px) {
+  .main__stage {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: 20vh;
+    background: url("../images/bg-sidebar-mobile.svg") center/cover;
+    border-radius: 0;
+    padding: 0;
+    margin: 0;
+  }
 }
 .main__pages {
   position: relative;
@@ -116,6 +137,11 @@ body {
   font-weight: 700;
   width: 100%;
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .step {
+    width: auto;
+  }
 }
 .step__number {
   border-radius: 50%;
@@ -136,6 +162,11 @@ body {
   flex-direction: column;
   row-gap: 2px;
   flex-wrap: wrap;
+}
+@media (max-width: 768px) {
+  .step__name {
+    display: none;
+  }
 }
 .step__name > h2 {
   font-weight: 400;
@@ -374,6 +405,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.25s ease-in;
 }
 
 .toggle__month {
