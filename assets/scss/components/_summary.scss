@@ -9,6 +9,11 @@
     border-radius: 15px;
     font-size: 0.8rem;
     padding: 20px ;
+
+    @include respond-to ('medium')  {
+        font-size: 0.4rem;
+    }
+
     &__plan  {
         display: flex;
         justify-content: space-between;
@@ -44,6 +49,7 @@
         row-gap: 20px;
         padding: 10px 0;
         &__picked  {
+
             display: flex;
             justify-content: space-between;
             &__name  {

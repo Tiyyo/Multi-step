@@ -43,6 +43,10 @@
         justify-content: space-between;
         padding-bottom: 35px;
         height: 100%;
+
+        @include respond-to ('medium')  {
+            font-size: 20%;
+        }
        
         
         &__header  {
@@ -51,15 +55,11 @@
             row-gap: 15px;
             
             & > h5  {
-                color: var(--title);
-                font-size: 2.7rem;
-                font-weight: 700;
+                @include h5_title ;
             }
 
             & > h6  {
-                color: var(--color_6);
-                font-size: 1.2rem;
-                font-weight: 400;
+                @include h6_title;
             }
         }
 
@@ -86,6 +86,10 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+        
+        @include respond-to ('medium') {
+            display: none;
+        }
 
         .prev  {
             position: absolute;

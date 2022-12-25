@@ -17,3 +17,24 @@
             + 'Please make sure it is defined in `$breakpoints` map.';
     }
 }
+
+@mixin h5_title {
+    color: var(--title);
+    font-size: 2.7rem;
+    font-weight: 700;
+
+    @include respond-to( 'medium') {
+        font-size: 1.7rem;
+    }
+}
+
+@mixin h6_title {
+    color: var(--color_6);
+    font-size: 1.2rem;
+    font-weight: 400;
+
+    @include respond-to('medium')  {
+        font-size : 1.1rem;
+        line-height: 1.3;
+    }
+}

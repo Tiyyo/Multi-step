@@ -9,4 +9,10 @@ body  {
     align-items: center;
     background-color: var(--bg);
 
+    @include respond-to ('medium')  {
+        min-height: 100vh;
+        flex-direction: column;
+        justify-content: flex-start;
+
+    }
 }

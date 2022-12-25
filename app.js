@@ -20,6 +20,9 @@ const addonSummaryContainer = document.getElementById(
 const planContainer = document.getElementsByClassName("plan__container")[0];
 const totalBilling = document.getElementById("total-option-billling");
 const totalPrice = document.getElementById("total-price");
+const mobileNextBtn = document.getElementById("mobile-next-btn");
+const mobilePrevBtn = document.getElementById("mobile-prev-btn");
+const mobileConfirmBtn = document.getElementById("mobile-confirm-btn");
 
 const onlineService = {
   name: "Online service",
@@ -78,6 +81,8 @@ let plans = [arcade, advanced, pro];
 let changeBtn;
 let planSelected;
 let totalPlanPrice;
+
+console.log(mobileNextBtn);
 
 class UI {
   static setStageNumber = (arr, number) => {
@@ -348,6 +353,9 @@ allBtn.forEach((btn) => {
     } else if (e.target.className === "prev") {
       stage--;
     }
+    mobileNextBtn.setAttribute("data-step", stage);
+    mobilePrevBtn.setAttribute("data-step", stage);
+    mobileConfirmBtn.setAttribute("data-step", stage);
     UI.setStageNumber(allPages, stage);
     UI.setIndicatorStage(roundIndicatorStep, stage);
   });
@@ -356,4 +364,15 @@ allBtn.forEach((btn) => {
 confirmBtn.addEventListener("click", () => {
   let stage = 5;
   UI.setStageNumber(allPages, stage);
+  mobileNextBtn.setAttribute("data-step", stage);
+  mobilePrevBtn.setAttribute("data-step", stage);
+  mobileConfirmBtn.setAttribute("data-step", stage);
+});
+
+mobileConfirmBtn.addEventListener("click", () => {
+  let stage = 5;
+  UI.setStageNumber(allPages, stage);
+  mobileNextBtn.setAttribute("data-step", stage);
+  mobilePrevBtn.setAttribute("data-step", stage);
+  mobileConfirmBtn.setAttribute("data-step", stage);
 });
