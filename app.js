@@ -317,6 +317,9 @@ roundIndicatorStep.forEach((indicator) => {
     if (Validation.stage() === true) {
       UI.setStageNumber(allPages, stage);
       UI.setIndicatorStage(roundIndicatorStep, stage);
+      mobileNextBtn.setAttribute("data-step", stage);
+      mobilePrevBtn.setAttribute("data-step", stage);
+      mobileConfirmBtn.setAttribute("data-step", stage);
     }
   });
 });

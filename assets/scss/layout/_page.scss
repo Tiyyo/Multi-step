@@ -35,6 +35,10 @@
     height: 100%;
     padding-top: 35px;
 
+    @include respond-to ('medium') {
+        padding-top: 5px;
+    }
+
     
     
     &__main  {
@@ -66,6 +70,11 @@
         &__choices  {
                 padding-top: 65px;
                 height: 100%;
+
+                @include respond-to ('large') {
+                    padding-top: 10px;
+                }
+            
         }
     }
 
